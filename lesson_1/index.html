@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="food in foods">{{food}}<button @click="delteargs(food)">+</button></li>
+        </ul>
+        <input v-model="message" placeholder="edit me">
+        <p>Message is: {{ message }}</p>
+        <button @click="addfood"> add food</button>
+
+    </div>
+    <script >
+     app = new Vue({
+         el:"#app",
+         data:{
+            message:'',
+            foods:["annas","oraing","orang"]
+         },
+         methods: {
+            addfood(){
+                this.foods.push(this.message); 
+                this.message='';
+            },
+            delteargs(foods){
+               var index = this.foods.indexOf(foods);
+               this.foods.splice(index, 1);
+            }
+         },
+     })
+    
+    </script>
+    
+</body>
+</html>
