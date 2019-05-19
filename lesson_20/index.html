@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+    <style>
+        .blue{
+            background: blue;
+        }
+        .red{
+            color: #000;  
+            background: red;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            float: left;
+            padding: 2px;
+            margin: 20px;
+        }
+    </style>
+<div id="app">
+      <div  :class="'red'">the first div and the red one </div>
+      <div  :class="{blue:true}">the first div and the blue one </div>
+      <div   :class="objectClass">taroore </div>
+      <button @click="isActive= !isActive;">toioote</button>
+</div>
+<script>
+    // v-once one once 
+ new Vue({
+     el:'#app',
+     data:{
+         isActive:false
+     },
+     computed: {
+        objectClass:function(){
+            return {blue:this.isActive, red: !this.isActive};
+        }
+     }
+ })
+</script>
+    
+</body>
+</html>
