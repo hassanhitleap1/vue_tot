@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+  <div   @mouseover="firstdiv"style="width: 400px;height: 400px; background: #000;">
+    <div @mouseover.self="secounddiv" style="width:200px; height: 200px; background: aquamarine">
+    </div>
+
+    </div>
+  </div>
+  <div id="app2">
+        <div   @mouseover="firstdiv"style="width: 400px;height: 400px; background: #000;">
+          <div @mouseover.once="secounddiv" style="width:200px; height: 200px; background: aquamarine">
+          </div>
+      
+          </div>
+        </div>
+        <div id="app3">
+                <div   @mouseover="firstdiv"style="width: 400px;height: 400px; background: #000;">
+                  <div @mouseover.capture="secounddiv" style="width:200px; height: 200px; background: aquamarine">
+                  </div>
+              
+                  </div>
+                </div>
+  <script>
+      // self parent do event   @mouseover.self  be sure do from self not child 
+  new Vue({
+    el:"#app",
+    data:{
+    },methods: {
+        firstdiv: function(){
+            console.log("firstdiv") 
+        } ,
+        secounddiv: function(){
+            console.log("secounddiv") 
+        },
+      
+    },
+
+  })
+  // once done once 
+  new Vue({
+    el:"#app2",
+    data:{
+    },methods: {
+        firstdiv: function(){
+            console.log("firstdiv") 
+        } ,
+        secounddiv: function(){
+            console.log("secounddiv") 
+        },
+      
+    },
+
+  })
+  //capture  event 
+
+  new Vue({
+    el:"#app3",
+    data:{
+    },methods: {
+        firstdiv: function(){
+            console.log("firstdiv") 
+        } ,
+        secounddiv: function(){
+            console.log("secounddiv") 
+        },
+      
+    },
+
+  })
+  </script>
+</body>
+</html>
