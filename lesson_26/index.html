@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue2.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <div v-if="active"> v if</div>
+        <div v-show="active"> v show</div>
+        <div v-if="!active"> ! v if</div>
+        <div v-show="!active">! v show</div>
+        <button @click="active=!active"> t</button>
+    </div>
+    <script>
+        // v-once one once 
+        new Vue({
+            el: '#app',
+            data: {
+                active:true
+            }
+        })
+    </script>
+
+</body>
+
+</html>
