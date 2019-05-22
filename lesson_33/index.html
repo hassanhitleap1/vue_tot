@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue2.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+           
+        <div style="display: block; padding: 10px;" v-for="(item,index) in objectList" class="users" :key="item.age" >
+            <input type="text" v-model="item.firstName"/>
+        </div>
+        <button @click="revers">revers</button>
+        <button @click="adderror">adderror</button>
+    </div>
+    <style>
+    
+    .errors input{
+        border: solid 2px red;   
+    }
+    </style>
+    <script>
+        // v-once one once 
+        new Vue({
+            el: '#app',
+            data: {
+          
+                objectList:[{firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"},
+                            {firstName:"John1", lastName:"Doe", age:30, eyeColor:"blue"},
+                            {firstName:"John2", lastName:"Doe", age:25, eyeColor:"blue"}]
+            },methods: {
+                revers(){
+                    this.objectList.reverse();
+                },adderror(){
+                        document.querySelector('.users').classList.add('errors');
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
