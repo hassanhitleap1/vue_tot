@@ -14,8 +14,12 @@
 <body>
 
     <div id="app">
-            <div v-for="(item ,index ,key) in objectList" >
-                  # {{index}} - @ {{key}} - {{item.firstName}} -  {{item.lastName}} -  {{item.age}} -  {{item.eyeColor}}   
+            <div v-for="(list ,index) in objectList" >
+                    # {{index}}
+                    <div v-for="(item ,attr,index2) in list" >
+                        #{{index2}} :{{attr}} - {{item}}
+                    </div>
+                 
                 </div>
         <div style="display: block; padding: 10px;" v-for="(item,index) in objectList">
              # {{ index}}
