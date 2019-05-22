@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue2.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+            <div v-for="(item ,index ,key) in objectList" >
+                  # {{index}} - @ {{key}} - {{item.firstName}} -  {{item.lastName}} -  {{item.age}} -  {{item.eyeColor}}   
+                </div>
+        <div style="display: block; padding: 10px;" v-for="(item,index) in objectList">
+             # {{ index}}
+            <input type="text" v-model="item.firstName"/>
+            <input type="text" v-model="item.lastName"/>
+            <input type="text" v-model="item.age"/>
+            <input type="text" v-model="item.eyeColor"/>
+            <button @click="deleteItem(index)">Delete</button>
+        </div>
+        <input type="text" v-model="demo.firstName"/>
+        <input type="text" v-model="demo.lastName"/>
+        <input type="text" v-model="demo.age"/>
+        <input type="text" v-model="demo.eyeColor"/>
+        <button @click="add">add</button>
+    </div>
+    <script>
+        // v-once one once 
+        new Vue({
+            el: '#app',
+            data: {
+                demo:{
+                    firstName:'',
+                    lastName:'',
+                    age:0,
+                    eyeColor:'' 
+                },
+                objectList:[{firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"},
+                            {firstName:"John1", lastName:"Doe", age:30, eyeColor:"blue"},
+                            {firstName:"John2", lastName:"Doe", age:25, eyeColor:"blue"}]
+            },methods: {
+                add(){ 
+                    this.objectList.push(this.demo);
+                    console.log(this.objectList);  
+                },
+                deleteItem(index){
+                    this.objectList.splice(index, 1) 
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
