@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue2.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+            <h1>list number</h1>
+            <ul>
+                <li v-for="number in listNumber">{{number}}</li>
+            </ul>
+            <h1>even number</h1>
+            <ul>
+                <li v-for="number in evenNumber(listNumber)">{{number}}</li>
+            </ul>
+            <h1>ouad number</h1>
+            <ul>
+                <li v-for="number in oddNumber(listNumber)">{{number}}</li>
+            </ul>
+            <h1>oad nmber with computed</h1>
+            <ul>
+                <li v-for="number in oddNumberComputed">{{number}}</li>
+            </ul>
+            <h1>users</h1>
+            <ul>
+                <li v-for="user in users">name :{{user.name}} - agre: {{user.age}} </li>
+            </ul>
+            <h1>users filteruser</h1>
+            <ul>
+                <li v-for="user in filteruser()">name :{{user.name}} - agre: {{user.age}} </li>
+            </ul>
+            <input type="text" v-model="search">
+        </div>
+    <script>
+        // v-once one once 
+        new Vue({
+            el: '#app',
+            data: {
+                listNumber:[1,2,3,4,5,6,7,8,9],
+                users:[
+                    {name:"hasan",age:20},
+                    { name: "khaled", age: 34 },
+                    { name: "yosif", age: 26 },
+                    { name: "nadia", age: 27 },
+                    { name: "suzan", age: 35 },
+                ],
+                search:''
+            },methods: {
+              evenNumber:function(evenNumber){
+                return   evenNumber.filter(function (number) {
+                    return number%2 ==0;
+                })
+              } ,
+               oddNumber: function (evenNumber) {
+                    return evenNumber.filter(function (number) {
+                        return number % 2 !== 0;
+                    })
+                },
+                filteruser:function(){
+                    var app =this;
+                    return this.users.filter(function (user) {
+                        return user.name.indexOf(app.search) !==-1 ;
+                    })  
+                }
+              
+            },computed: {
+                oddNumberComputed:function(){
+                
+                    return this.listNumber.filter(function (number) {
+                        return number % 2 !== 0;
+                    })  
+                },
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>
