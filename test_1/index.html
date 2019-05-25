@@ -1,0 +1,75 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue2.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div id="app">
+
+    <div class="input-group flex-nowrap">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="addon-wrapping">search</span>
+        </div>
+        <input type="text" class="form-control" placeholder="search" aria-label="Username"
+            aria-describedby="addon-wrapping" v-model="search">
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(user,index) in filterSerach()">
+                <th scope="row">{{index}}</th>
+                <td>{{user.name}}</td>
+                <td>{{user.agree}}</td>
+                
+            </tr>
+
+        </tbody>
+    </table>
+      
+    </div>
+    <script>
+        // v-once one once 
+        new Vue({
+            el: '#app',
+            data: {
+                search:"",
+                users:[
+                    {name:"hasan", agree:12},
+                    { name: "jdos", agree: 12 },
+                    { name: "kd", agree: 15 },
+                    { name: "ojds", agree: 99 },
+                    { name: "hasdojsoan", agree: 54 },
+                ]
+            },methods: {
+                filterSerach:function(){
+                      var app = this;
+                    return this.users.filter(function (user) {
+                        return (user.name.indexOf(app.search) || user.agree.indexOf(app.search))  !== -1;
+                    }) 
+                }
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>
