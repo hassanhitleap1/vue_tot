@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue2.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</head>
+<body>
+    <div id="app">
+        <div class="card text-center">
+            <div class="card-header">
+                <div class="input-group input-group-lg mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">name todo</span>
+                    </div>
+                    <input type="text" class="form-control" v-on:keyup.enter="addTodo" v-model="todo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    <button type="button" class="btn btn-primary btn-lg" @click="addTodo">add ToDo</button>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">count todos {{todos.length}}</h5>
+                <ul class="list-group">
+                    <li class="list-group-item" v-for="(todo,index) in getTodos"  :class="{'list-group-item-success':todo.complete}">
+
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" :checked="todo.complete"  @change="check(index)" class="custom-control-input" :id="'switch'+index">
+                            <label class="custom-control-label" :for="'switch'+index">{{todo.title}}</label>
+                        </div>
+
+                        <button type="button" class="btn btn-danger float-right" @click="delTodo(index)"><span class="far fa-trash-alt"></span></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="col-md-6">
+                            <div class="form-group float-left">
+                                    <button type="button" class="btn btn-outline-secondary" @click="action='all'" :class="{'active':action=='all'}" v-model="action">all</button>
+                                    <button type="button" class="btn btn-outline-secondary " @click="action='completed'" :class="{'active':action=='completed'}"  v-model="action">completed</button>
+                                    <button type="button" class="btn btn-outline-secondary " @click="action='uncompleted'" :class="{'active':action=='uncompleted'}"  v-model="action">un completed</button>
+                                  </div>
+                    </div>
+                    <div class="col-md-6">
+                            <div class="form-group  float-right">
+                                    <button type="button" class="btn btn-outline-secondary" @click="completeAll">complete all</button>
+                                    <button type="button" class="btn btn-outline-secondary" @click="uncompleteAll">complete all</button>
+                                    <button type="button" class="btn btn-outline-secondary" @click="delAll">delete all</button>
+                                    
+                                  </div>
+                        </div>       
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
