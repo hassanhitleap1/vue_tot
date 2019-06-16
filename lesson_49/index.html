@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue2.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</head>
+<body>
+     
+    <div id="app">
+        <prduct name="product 1" price="20"> </prduct>
+        <prduct name="product 1" price="18"> </prduct>
+        <prduct v-for="product in products"  :name="product.name" :price="product.price"></prduct>
+        
+    
+    </div>
+    <script>
+        Vue.component('prduct',{
+            template:`<div>{{name}} {{price}}</div>`,
+            props:["name","price"],
+        })
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                users:[
+                    {name:"hasan",age:20},
+                    { name: "khaled", age: 34 },
+                    { name: "yosif", age: 26 },
+                    { name: "nadia", age: 27 },
+                    { name: "suzan", age: 35 },
+                ],
+                products:[
+                     {name:"ssss",price:20},{name:"ssss",price:20},{name:"ssss",price:555},{name:"ssss",price:20},
+                     ]
+            }
+          
+        });
+    </script> 
+
+</body>
+
+</html>
