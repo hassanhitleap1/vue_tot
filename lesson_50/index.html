@@ -15,17 +15,26 @@
 <body>
      
     <div id="app">
-        <prduct name="product 1" price="20" category-product="cae 1"> </prduct>
-        <prduct name="product 1" price="18"> </prduct>
-        <prduct v-for="product in products"  :name="product.name" :price="product.price"></prduct>
+        <prduct name="product 1" :price=20 category-product="cae 1"> </prduct>
+        <prduct name="product 1" :price=18> </prduct>
+        <prduct name="product 1" :price=-1> </prduct>
         
     
     </div>
     <script>
         Vue.component('prduct',{
             template:`<div>{{name}} {{price}}</div>`,
-            props:[
-                "name","price"],
+            props:{
+                name:{required:true,default:""},
+                price:{type: Number,validator: function (value) {
+                       return value >= 0 ;
+                    } 
+                },
+                categoryProduct:{required:true ,type: String}
+
+            }
+                
+            
         })
 
         var vm = new Vue({
