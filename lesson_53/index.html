@@ -15,39 +15,36 @@
 <body>
      
     <div id="app">
-        <user :user-info="user"></user>
+        {{count}}
+        <count :val=1 @incremento="incremento()"></count>
+        <count :val=1 @incremento="incremento2()"></count>
 
     </div>
     <script>
-        Vue.component('user',{
-            template:`<div> <p>{{userInfo.id}}</p>
-                        <p>{{userInfo.name}}</p>
-                        <userimag :path=userInfo.avatar />
-                    </div>`,
-            props:{
-                userInfo:{required:true},
+        Vue.component('count',{
+          template:`<button @click="increment()"> increased ++ </button>`,
+            props:["val"],
+            methods: {
+                increment:function(){
+                    this.$emit('incremento')
+                }
             }
-                
-        })
 
-        Vue.component('userimag',{
-            template:`<img :src=path />`,
-            props:{
-                path:{required:true},
-            }
-                
-        })
+        });
 
         var vm = new Vue({
             el:'#app',
             data:{
-                user:{
-                    id:22,
-                    name:"hasan",
-                    avatar:"http://localhost:8000/images/user.png",
-
-                }
-            }
+             count:0
+            },
+            methods: {
+                incremento:function(){
+                    this.count ++;
+                },
+                incremento2:function(){
+                    this.count +=2;
+                },
+            },
           
         });
     </script> 
